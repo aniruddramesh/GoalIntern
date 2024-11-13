@@ -1,0 +1,24 @@
+/* SemesterButtons.css */
+.sem-button {
+    width: 100%;
+    max-width: 200px;
+    padding: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #2b282e, #6c7480);
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  
+  .sem-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sem-button:focus {
+    outline: none;
+  }
+  

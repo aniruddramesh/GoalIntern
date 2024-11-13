@@ -1,0 +1,68 @@
+/* Custom Header Background and Logo */
+.custom-header {
+    background: linear-gradient(135deg, #333, #222);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo-icon svg {
+    fill: #f0db4f; /* Change color of the logo/icon */
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-icon:hover svg {
+    transform: rotate(360deg);
+  }
+  
+  /* Navigation Links */
+  .nav .nav-link {
+    color: #ddd;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  
+  .nav .nav-link:hover {
+    color: #f0db4f;
+    border-bottom: 2px solid #f0db4f;
+  }
+  
+  /* Search Bar */
+  .search-bar input[type="search"] {
+    border-radius: 20px;
+    background-color: #444;
+    border: none;
+    color: #eee;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-bar input[type="search"]:focus {
+    background-color: #555;
+    outline: none;
+  }
+  
+  /* Button Styles */
+  .custom-login {
+    color: #ddd;
+    border-color: #f0db4f;
+    border-radius: 20px;
+    transition: all 0.3s;
+  }
+  
+  .custom-login:hover {
+    color: #f0db4f;
+    border-color: #f0db4f;
+  }
+  
+  .custom-signup {
+    background-color: #f0db4f;
+    color: #222;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-signup:hover {
+    background-color: #ffcc33;
+    color: #111;
+  }
+  

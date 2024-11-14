@@ -2,11 +2,12 @@ import React from 'react'
 import './branch.css'
 import { Link } from 'react-router-dom'
 
+
 function Branch() {
     return (
         <div className="home-page d-flex justify-content-center align-items-center vh-100">
             
-            <Link to="sem">
+            <Link to="/option">
             <div className="cards-container text-center">
            
                 <button className="btn btn-primary mb-3 card-button">CS/IS</button>

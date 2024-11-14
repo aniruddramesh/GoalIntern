@@ -10,6 +10,8 @@ import { LoginProvider } from './components/Auth/LoginContext';
 import Profile from './components/Profile/profile';
 import Contact from './components/Contact/contact'
 import Signup from './components/Auth/signup';
+import Learn from './components/Learn/learn';
+import Option from './components/Option/option';
 
 function App() {
   return (
@@ -19,8 +21,11 @@ function App() {
       <Routes> 
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/learn" element={<Learn/>} /> */}
         <Route path="/getstarted" element={<Getstarted />} />
-        <Route path="/branch/sem" element={<Semester />} />
+        <Route path="/branch" element={<Branch />} />
+
+        <Route path="/option" element={<Option />} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/signup" element={<Signup/>} />

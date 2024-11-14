@@ -1,0 +1,82 @@
+/* Background with gradient */
+.signup-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #e0f7fa, #e0eafc);
+    padding: 20px;
+}
+  
+/* Glass effect signup card */
+.signup-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+  
+/* Heading */
+.signup-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+  
+/* Input fields styling */
+.signup-field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+  
+.signup-field label {
+    font-size: 0.9rem;
+    color: #757575;
+}
+  
+.signup-field input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+  
+.signup-field input:focus {
+    border-color: #80cbc4;
+    outline: none;
+}
+  
+/* Button styling */
+.signup-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #26a69a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+.signup-button:hover {
+    background-color: #00796b;
+}
+  
+/* Fade-in animation for signup card */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,108 @@
+
+.outer-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+  background: linear-gradient(120deg, #e0f7fa, #e0eafc);
+
+}
+.contact-container {
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for glass effect */
+  backdrop-filter: blur(10px); /* Blur effect for the glass-like appearance */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  transition: transform 0.3s ease; /* Smooth hover transition */
+  animation: fadeIn 1s ease; /* Fade-in animation for the container */
+  
+}
+
+.contact-container:hover {
+  transform: translateY(-5px); /* Hover effect to raise the container */
+}
+
+
+
+/* Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  color: #757575; /* Match the label color to login style */
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+  transition: all 0.3s ease; /* Smooth transition for focus effect */
+}
+
+input:focus,
+textarea:focus {
+  border-color: #80cbc4; /* Border color on focus */
+  outline: none;
+  box-shadow: 0 0 8px rgba(106, 137, 204, 0.2); /* Add focus glow effect */
+}
+
+/* Button Styling */
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #26a69a; /* Button color for consistency with the login button */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #00796b; /* Darken button on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Contact Info Styling */
+.contact-info {
+  text-align: center;
+  margin-top: 30px;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

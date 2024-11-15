@@ -12,12 +12,14 @@ import Contact from './components/Contact/contact'
 import Signup from './components/Auth/signup';
 import Learn from './components/Learn/learn';
 import Option from './components/Option/option';
+import Domains from './components/Domains/domains'
 
 function App() {
   return (
     <LoginProvider>
       
       <Header />
+      <Domains/>
       <Routes> 
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

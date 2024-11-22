@@ -19,7 +19,7 @@ function App() {
     <LoginProvider>
       
       <Header />
-      <Domains/>
+      {/* <Domains/> */}
       <Routes> 
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

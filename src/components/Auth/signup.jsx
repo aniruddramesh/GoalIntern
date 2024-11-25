@@ -6,21 +6,48 @@ function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Signup Successful:', { username, email, password });
-    setUsername('');
-    setEmail('');
-    setPassword('');
-    navigate('/login');
+
+    const user = {
+      username: username,
+      email: email,
+      password: password,
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        console.log('Signup Successful:', user);
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || 'Signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      setErrorMessage('An error occurred. Please try again later.');
+    }
   };
 
   return (
     <div className="signup-background">
       <div className="signup-card">
         <h2 className="signup-title">Sign Up</h2>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
           <div className="signup-field">
             <label htmlFor="username">Username</label>

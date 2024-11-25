@@ -15,7 +15,7 @@ function Home() {
           padding: '12rem',
           alignItems: 'center',
           position: 'relative',
-          backgroundImage: 'url("https://images.pexels.com/photos/29342583/pexels-photo-29342583/free-photo-of-close-up-of-autumn-maple-leaf-with-dew.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', // Add your background image here
+          backgroundImage: 'url("https://images.pexels.com/photos/2114014/pexels-photo-2114014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', // Add your background image here
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '100vh',

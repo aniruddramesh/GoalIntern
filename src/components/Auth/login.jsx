@@ -8,19 +8,37 @@ import './Login.css';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useLogin();
+  const { setUser } = useLogin(); // Assuming `useLogin` provides a way to set logged-in user details.
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const credentials = { username, password };
+
     try {
-      await login();
-      toast.success("Logged in successfully!");
+      const response = await fetch('http://localhost:8080/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      if (response.ok) {
+        const token = await response.text(); // Backend returns a JWT token.
+        localStorage.setItem('authToken', token); // Store token for subsequent requests.
+        setUser({ username }); // Update user context or state.
+        toast.success('Logged in successfully!');
+        navigate('/dashboard'); // Navigate to dashboard or home page.
+      } else {
+        toast.error('Invalid username or password. Please try again.');
+      }
     } catch (error) {
-      toast.error("Login failed. Please try again.");
+      console.error('Error during login:', error);
+      toast.error('An error occurred. Please try again later.');
     }
   };
-  
 
   return (
     <div className="login-background">
@@ -53,7 +71,7 @@ function Login() {
       <ToastContainer
         position="top-center"
         autoClose={3000}
-        hideProgressBar="false"
+        hideProgressBar={false}
         theme="light"
       />
     </div>

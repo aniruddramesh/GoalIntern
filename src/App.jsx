@@ -13,21 +13,21 @@ import Signup from './components/Auth/signup';
 import Learn from './components/Learn/learn';
 import Option from './components/Option/option';
 import Domains from './components/Domains/domains'
+import Roadmap from './components/RoadMap/webDRoadMap';
 
 function App() {
   return (
     <LoginProvider>
       
       <Header />
-      {/* <Domains/> */}
       <Routes> 
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/learn" element={<Learn/>} /> */}
         <Route path="/getstarted" element={<Getstarted />} />
         <Route path="/branch" element={<Branch />} />
-
+        <Route path="/skill-development" element={<Domains />} />
         <Route path="/option" element={<Option />} />
+        <Route path="/webDRoadMap" element={<Roadmap />} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/signup" element={<Signup/>} />

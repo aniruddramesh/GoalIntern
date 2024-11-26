@@ -1,0 +1,21 @@
+/* Progress Tracker */
+.progress-section {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .progress-bar-container {
+    width: 80%; /* Adjust width as needed */
+    height: 20px;
+    background-color: #3a3d40; /* Background of the progress bar container */
+    border-radius: 10px;
+    margin: 0 auto 10px auto;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #f0db4f; /* Progress bar color */
+    transition: width 0.5s ease-in-out; /* Smooth animation */
+  }
+  

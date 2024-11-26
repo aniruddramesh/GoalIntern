@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./profile.css";
 
 const ProfilePage = () => {
-  const completionPercentage = 75; // Dynamic value to be integrated with Spring Boot later
+  const [completionPercentage, setCompletionPercentage] = useState(0);
+
+  useEffect(() => {
+    // Simulate dynamic progress updates from the backend
+    const fetchProgress = async () => {
+      try {
+        const response = await fetch("http://your-backend-api/progress");
+        const data = await response.json();
+        setCompletionPercentage(data.percentage); // Set progress from API
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    };
+
+    const interval = setInterval(fetchProgress, 2000); // Fetch progress every 2 seconds
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
 
   return (
     <div className="profile-container">
@@ -20,6 +36,7 @@ const ProfilePage = () => {
             <h1 className="profile-name">John Doe</h1>
             <p className="profile-job-title">Software Engineer</p>
           </div>
+
           {/* Circular Progress Tracker */}
           <div className="progress-tracker">
             <h2 className="progress-title">Overall Progress</h2>
@@ -35,7 +52,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        {/* Profile Bio */}
+        {/* Profile Bio Section */}
         <div className="profile-bio">
           Passionate about solving complex problems through innovative solutions.
           Loves working on full-stack projects and contributing to open-source communities.
@@ -58,7 +75,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
+        {/* Profile Stats Section */}
         <div className="profile-stats">
           <h2 className="stats-title">Stats</h2>
           <div className="stat-item">
@@ -75,7 +92,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        {/* Actions Section */}
+        {/* Profile Actions Section */}
         <div className="profile-actions">
           <button className="edit-button">Edit Profile</button>
           <button className="view-button">View Challenges</button>

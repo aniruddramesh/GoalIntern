@@ -8,7 +8,7 @@ import './Login.css';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { setUser } = useLogin(); // Assuming `useLogin` provides a way to set logged-in user details.
+  const { login } = useLogin(); // Use the login function from the context.
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,11 +26,17 @@ function Login() {
       });
 
       if (response.ok) {
-        const token = await response.text(); // Backend returns a JWT token.
-        localStorage.setItem('authToken', token); // Store token for subsequent requests.
-        setUser({ username }); // Update user context or state.
+        const token = await response.text(); // Backend returns a JWT token as a response.
+
+        // Decode the JWT token if needed (e.g., to extract user details).
+        const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decode JWT payload
+        const userInfo = { username: decodedToken.sub }; // Example: Extract username from the token
+
+        // Use the login function to update the context with user and token
+        login(userInfo, token);
+
         toast.success('Logged in successfully!');
-        navigate('/dashboard'); // Navigate to dashboard or home page.
+        navigate('/dashboard'); // Navigate to a secured route
       } else {
         toast.error('Invalid username or password. Please try again.');
       }

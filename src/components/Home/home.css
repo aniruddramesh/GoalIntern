@@ -1,58 +1,57 @@
 /* Container */
 .display-flex {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #f8f9fa; /* Light background */
-  }
-  
-  /* Custom Card Styles */
-  .custom-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Clip content for rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  .custom-card img {
-    height: 200px; /* Uniform image height */
-    object-fit: cover; /* Crops image to fit */
-  }
-  
-  /* Card Hover Effects */
-  .custom-card:hover {
-    transform: translateY(-8px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
-  }
-  
-  .custom-card .card-body {
-    padding: 1.5rem;
-    background-color: #fff;
-    color: #333;
-    text-align: center;
-  }
-  
-  /* Card Title */
-  .custom-card .card-title {
-    font-weight: bold;
-    color: #343a40;
-  }
-  
-  /* Card Text */
-  .custom-card .card-text {
-    font-size: 0.9rem;
-    color: #6c757d;
-  }
-  
-  /* Button */
-  .custom-card .btn-primary {
-    background-color: #007bff;
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .custom-card .btn-primary:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f8f9fa; /* Light background */
+}
+
+/* Custom Card Styles */
+.custom-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Clip content for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.custom-card img {
+  height: 200px; /* Uniform image height */
+  object-fit: cover; /* Crops image to fit */
+}
+
+/* Card Hover Effects */
+.custom-card:hover {
+  transform: translateY(-8px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.custom-card .card-body {
+  padding: 1.5rem;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+}
+
+/* Card Title */
+.custom-card .card-title {
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Card Text */
+.custom-card .card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Button */
+.custom-card .btn-primary {
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.custom-card .btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

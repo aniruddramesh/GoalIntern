@@ -20,6 +20,7 @@ function App() {
     <LoginProvider>
       
       <Header />
+      <Profile/>
       <Routes> 
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

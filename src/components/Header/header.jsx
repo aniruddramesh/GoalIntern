@@ -23,7 +23,7 @@ function Header() {
           {isLoggedIn && <li><Link to="/branch" className="nav-link px-3 text-light">Learn</Link></li>}
         </ul>
 
-        {/* Search Bar */}
+        {/* Search Bar
         <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search-bar" role="search">
           <input
             type="search"
@@ -31,7 +31,7 @@ function Header() {
             placeholder="Search..."
             aria-label="Search"
           />
-        </form>
+        </form> */}
 
         {/* Buttons: Login, Signup, Profile, Logout */}
         <div className="text-end">

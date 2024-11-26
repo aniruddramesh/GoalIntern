@@ -1,24 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 
 const resources = [
-  { title: "HTML & CSS Basics", description: "Learn the foundation of web development." },
-  { title: "JavaScript Essentials", description: "Master JavaScript to add interactivity to your web pages." },
-  { title: "React Basics", description: "Understand components, state, and props in React." },
-  { title: "Advanced React", description: "Learn hooks, context API, and advanced patterns." },
-  { title: "Backend Development", description: "Explore Node.js, Express, and databases." },
-  { title: "Full Stack Projects", description: "Build and deploy full-stack applications." },
+  { title: "HTML & CSS Basics", description: "Learn the foundation of web development.", path: "/html-css" },
+  { title: "JavaScript Essentials", description: "Master JavaScript to add interactivity to your web pages.", path: "/javascript" },
+  { title: "React Basics", description: "Understand components, state, and props in React.", path: "/react-basics" },
+  { title: "Advanced React", description: "Learn hooks, context API, and advanced patterns.", path: "/advanced-react" },
+  { title: "Backend Development", description: "Explore Node.js, Express, and databases.", path: "/backend-development" },
+  { title: "Full Stack Projects", description: "Build and deploy full-stack applications.", path: "/full-stack-projects" },
 ];
 
 const Roadmap = () => {
+  const [progress, setProgress] = useState(0);
+  const [completed, setCompleted] = useState(new Array(resources.length).fill(false));
+
+  const handleCheckboxChange = (index) => {
+    const updatedCompleted = [...completed];
+    updatedCompleted[index] = !updatedCompleted[index];
+    setCompleted(updatedCompleted);
+
+    const completedCount = updatedCompleted.filter(Boolean).length;
+    const newProgress = Math.floor((completedCount / resources.length) * 100);
+    setProgress(newProgress);
+  };
+
   return (
     <div style={containerStyle}>
       <div style={backgroundAnimation}></div>
       <h2 style={titleStyle}>Your Creative Learning Roadmap</h2>
+
+      {/* Progress Bar */}
+      <div style={progressContainerStyle}>
+        <p style={progressTextStyle}>Progress: {progress}%</p>
+        <div style={progressBarStyle}>
+          <div style={{ ...progressBarFillStyle, width: `${progress}%` }}></div>
+        </div>
+      </div>
+
       <div style={roadmapStyle}>
         {resources.map((resource, index) => (
-          <Milestone key={index} index={index} resource={resource} />
+          <Milestone
+            key={index}
+            index={index}
+            resource={resource}
+            isChecked={completed[index]}
+            onCheckboxChange={() => handleCheckboxChange(index)}
+          />
         ))}
         <div style={lineStyle}></div>
       </div>
@@ -26,7 +55,7 @@ const Roadmap = () => {
   );
 };
 
-const Milestone = ({ index, resource }) => {
+const Milestone = ({ index, resource, isChecked, onCheckboxChange }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -42,8 +71,21 @@ const Milestone = ({ index, resource }) => {
     <animated.div ref={ref} style={{ ...milestoneStyle, ...animation }}>
       <div style={circleStyle}>{index + 1}</div>
       <div style={contentStyle}>
-        <h3 style={resourceTitleStyle}>{resource.title}</h3>
-        <p style={resourceDescriptionStyle}>{resource.description}</p>
+        <Link to={resource.path} style={linkStyle}>
+          <h3 style={resourceTitleStyle}>{resource.title}</h3>
+          <p style={resourceDescriptionStyle}>{resource.description}</p>
+        </Link>
+        <label style={toggleContainerStyle}>
+  <input
+    type="checkbox"
+    checked={isChecked}
+    onChange={onCheckboxChange}
+    style={hiddenCheckboxStyle}
+  />
+  <span style={toggleStyle(isChecked)}>
+    <div style={toggleCircleStyle}></div>
+  </span>
+</label>
       </div>
     </animated.div>
   );
@@ -60,6 +102,7 @@ const containerStyle = {
   fontFamily: "'Poppins', sans-serif",
   background: "linear-gradient(to bottom right, #4e54c8, #8f94fb)",
   overflow: "hidden",
+  top:"40px",
 };
 
 const titleStyle = {
@@ -146,14 +189,107 @@ const backgroundAnimation = {
   filter: "blur(80px)",
 };
 
-// Adding @keyframes in JavaScript
+const progressContainerStyle = {
+  width: "80%",
+  maxWidth: "600px",
+  margin: "20px 0",
+};
+
+const progressTextStyle = {
+  color: "#fff",
+  fontSize: "1.2rem",
+  marginBottom: "10px",
+  textAlign: "center",
+};
+
+const progressBarStyle = {
+  width: "100%",
+  height: "10px",
+  backgroundColor: "#ccc",
+  borderRadius: "5px",
+  overflow: "hidden",
+};
+
+const progressBarFillStyle = {
+  height: "100%",
+  backgroundColor: "#ff6f61",
+  transition: "width 0.3s ease-in-out",
+};
+
+const linkStyle = {
+  textDecoration: "none",
+  color: "inherit",
+  display: "block",
+};
+
+const toggleContainerStyle = {
+  display: "flex",
+  alignItems: "center",
+  marginTop: "10px",
+  position: "relative",
+  cursor: "pointer",
+};
+
+const hiddenCheckboxStyle = {
+  opacity: 0,
+  position: "absolute",
+  pointerEvents: "none",
+};
+
+const toggleStyle = (isChecked) => ({
+  position: "relative",
+  width: "50px",
+  height: "25px",
+  backgroundColor: isChecked ? "#4caf50" : "#ccc", // Green if checked, gray otherwise
+  borderRadius: "50px",
+  transition: "all 0.3s ease",
+  boxShadow: "inset 0 0 5px rgba(0, 0, 0, 0.2)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: isChecked ? "flex-end" : "flex-start",
+  padding: "0 5px",
+});
+
+const toggleCircleStyle = {
+  width: "20px",
+  height: "20px",
+  backgroundColor: "#fff",
+  borderRadius: "50%",
+  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+  transition: "all 0.3s ease",
+};
+
+
 const style = document.createElement("style");
 style.textContent = `
 @keyframes float {
   0% { transform: scale(1.2) translateY(0); }
   50% { transform: scale(1.2) translateY(-20px); }
   100% { transform: scale(1.2) translateY(0); }
-}`;
+}
+
+label input:checked + span {
+  background-color: #4caf50;
+}
+
+label input:checked + span::after {
+  left: calc(100% - 25px);
+}
+
+label span::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background: #fff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+`;
 document.head.appendChild(style);
 
 export default Roadmap;

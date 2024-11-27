@@ -36,7 +36,7 @@ function Login() {
         login(userInfo, token);
 
         toast.success('Logged in successfully!');
-        navigate('/dashboard'); // Navigate to a secured route
+        navigate('/'); // Navigate to a secured route
       } else {
         toast.error('Invalid username or password. Please try again.');
       }

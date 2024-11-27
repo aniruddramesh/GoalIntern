@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 
 const resources = [
-  { title: "HTML & CSS Basics", description: "Learn the foundation of web development.", path: "/html-css" },
+  { title: "HTML & CSS Basics", description: "Learn the foundation of web development.", path: "/section1" },
   { title: "JavaScript Essentials", description: "Master JavaScript to add interactivity to your web pages.", path: "/javascript" },
   { title: "React Basics", description: "Understand components, state, and props in React.", path: "/react-basics" },
   { title: "Advanced React", description: "Learn hooks, context API, and advanced patterns.", path: "/advanced-react" },

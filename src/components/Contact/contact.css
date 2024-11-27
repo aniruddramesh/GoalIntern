@@ -4,7 +4,9 @@
   justify-content: center;
   align-items: center;
   padding: 70px;
+  height: 100vh;
   background: linear-gradient(120deg, #e0f7fa, #e0eafc);
+  top: 60px;
 
 }
 .contact-container {

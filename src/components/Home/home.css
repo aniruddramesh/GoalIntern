@@ -1,57 +1,92 @@
-/* Container */
-.display-flex {
+/* General container styling */
+.home-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Particle background styling */
+.particles-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Cards container */
+.content {
   display: flex;
   gap: 2rem;
-  justify-content: center;
-  padding: 2rem;
-  background-color: #f8f9fa; /* Light background */
+  z-index: 1;
 }
 
-/* Custom Card Styles */
+/* Custom card styling */
 .custom-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Clip content for rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background: #fefae0;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 20rem; /* Adjust card width */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
 }
 
-.custom-card img {
-  height: 200px; /* Uniform image height */
-  object-fit: cover; /* Crops image to fit */
-}
-
-/* Card Hover Effects */
 .custom-card:hover {
-  transform: translateY(-8px); /* Slight lift on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  transform: translateY(-10px);
 }
 
-.custom-card .card-body {
-  padding: 1.5rem;
-  background-color: #fff;
-  color: #333;
+/* Image section of the card */
+.card-image {
+  width: 100%;
+  height: 250px; /* Adjust height for larger images */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Placeholder background color */
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image fits perfectly */
+}
+
+/* Card body styling */
+.card-body {
+  padding: 1rem;
   text-align: center;
 }
 
-/* Card Title */
-.custom-card .card-title {
+.card-title {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #343a40;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
-/* Card Text */
-.custom-card .card-text {
-  font-size: 0.9rem;
-  color: #6c757d;
+.card-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
-/* Button */
-.custom-card .btn-primary {
+.btn-primary {
   background-color: #007bff;
   border: none;
-  transition: background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-.custom-card .btn-primary:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.btn-primary:hover {
+  background-color: #0056b3;
 }
+

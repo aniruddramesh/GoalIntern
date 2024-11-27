@@ -14,6 +14,7 @@ import Learn from './components/Learn/learn';
 import Option from './components/Option/option';
 import Domains from './components/Domains/domains'
 import Roadmap from './components/RoadMap/webDRoadMap';
+import WebDResources from './components/WebDResources/section1';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/profile" element={<Profile/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/signup" element={<Signup/>} />
+        <Route path="/section1" element={<WebDResources/>} />
 
       </Routes>
     

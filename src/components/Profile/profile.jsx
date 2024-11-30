@@ -5,97 +5,135 @@ import "./profile.css";
 
 const ProfilePage = () => {
   const [completionPercentage, setCompletionPercentage] = useState(0);
+  const [isEditing, setIsEditing] = useState(false);
+  const [profileData, setProfileData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    location: "",
+    bio: "",
+  });
 
   useEffect(() => {
-    // Simulate dynamic progress updates from the backend
-    const fetchProgress = async () => {
-      try {
-        const response = await fetch("http://your-backend-api/progress");
-        const data = await response.json();
-        setCompletionPercentage(data.percentage); // Set progress from API
-      } catch (error) {
-        console.error("Error fetching progress:", error);
-      }
-    };
+    // Fetch data from localStorage
+    const storedProfileData = localStorage.getItem("userProfileData");
+    const storedProgress = localStorage.getItem("userProgress");
 
-    const interval = setInterval(fetchProgress, 2000); // Fetch progress every 2 seconds
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    if (storedProfileData) {
+      setProfileData(JSON.parse(storedProfileData));
+    }
+    if (storedProgress) {
+      setCompletionPercentage(parseInt(storedProgress));
+    }
   }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleProgressChange = (e) => {
+    const value = Math.min(Math.max(parseInt(e.target.value), 0), 100); // Ensure between 0 and 100
+    setCompletionPercentage(value);
+  };
+
+  const handleSave = () => {
+    // Save to localStorage
+    localStorage.setItem("userProfileData", JSON.stringify(profileData));
+    localStorage.setItem("userProgress", completionPercentage);
+    setIsEditing(false); // Exit editing mode
+  };
+
+  const handleEditToggle = () => {
+    setIsEditing(!isEditing);
+  };
 
   return (
     <div className="profile-container">
       <div className="profile-card">
-        {/* Profile Header Section */}
-        <div className="profile-header">
-          <div className="header-content">
-            <img
-              className="profile-image"
-              src="https://via.placeholder.com/150"
-              alt="Profile"
-            />
-            <h1 className="profile-name">John Doe</h1>
-            <p className="profile-job-title">Software Engineer</p>
-          </div>
+        <h1 className="profile-header">Profile Page</h1>
 
-          {/* Circular Progress Tracker */}
-          <div className="progress-tracker">
-            <h2 className="progress-title">Overall Progress</h2>
+        {/* Name Section */}
+        <div className="profile-section">
+          <h2 className="section-title">Your Name:</h2>
+          {isEditing ? (
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              value={profileData.name}
+              onChange={handleChange}
+              className="profile-input"
+            />
+          ) : (
+            <p className="profile-info">{profileData.name || "Your Name"}</p>
+          )}
+        </div>
+
+        {/* Progress Section */}
+        <div className="profile-section">
+          <h2 className="section-title">Your Progress:</h2>
+          <div className="progress-container">
             <CircularProgressbar
               value={completionPercentage}
               text={`${completionPercentage}%`}
               styles={buildStyles({
-                textColor: "#f0db4f",
-                pathColor: "#f0db4f",
-                trailColor: "#444",
+                textColor: "#333",
+                pathColor: "#4caf50",
+                trailColor: "#ddd",
               })}
             />
           </div>
+          {isEditing && (
+            <div className="progress-input-container">
+              <label htmlFor="progress" className="progress-label">
+                Set Progress:
+              </label>
+              <input
+                type="number"
+                id="progress"
+                name="progress"
+                value={completionPercentage}
+                onChange={handleProgressChange}
+                min="0"
+                max="100"
+                className="progress-input"
+              />
+            </div>
+          )}
         </div>
 
-        {/* Profile Bio Section */}
-        <div className="profile-bio">
-          Passionate about solving complex problems through innovative solutions.
-          Loves working on full-stack projects and contributing to open-source communities.
+        {/* Bio Section */}
+        <div className="profile-section">
+          <h2 className="section-title">About You:</h2>
+          {isEditing ? (
+            <textarea
+              name="bio"
+              placeholder="Write something about yourself..."
+              value={profileData.bio}
+              onChange={handleChange}
+              className="profile-input"
+              rows="4"
+            />
+          ) : (
+            <p className="profile-info">{profileData.bio || "Tell us about yourself!"}</p>
+          )}
         </div>
 
-        {/* Profile Details Section */}
-        <div className="profile-details">
-          <h2 className="details-title">Details</h2>
-          <div className="detail-item">
-            <span className="detail-label">Email:</span>
-            <span className="detail-value">john.doe@example.com</span>
-          </div>
-          <div className="detail-item">
-            <span className="detail-label">Phone:</span>
-            <span className="detail-value">+1 (555) 123-4567</span>
-          </div>
-          <div className="detail-item">
-            <span className="detail-label">Location:</span>
-            <span className="detail-value">New York, USA</span>
-          </div>
-        </div>
-
-        {/* Profile Stats Section */}
-        <div className="profile-stats">
-          <h2 className="stats-title">Stats</h2>
-          <div className="stat-item">
-            <span className="stat-value">150</span>
-            <span className="stat-label">Challenges Solved</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-value">45</span>
-            <span className="stat-label">Projects</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-value">1200</span>
-            <span className="stat-label">Ranking Points</span>
-          </div>
-        </div>
-
-        {/* Profile Actions Section */}
+        {/* Profile Actions */}
         <div className="profile-actions">
-          <button className="edit-button">Edit Profile</button>
-          <button className="view-button">View Challenges</button>
+          {isEditing ? (
+            <button className="save-button" onClick={handleSave}>
+              Save Profile
+            </button>
+          ) : (
+            <button className="edit-button" onClick={handleEditToggle}>
+              Edit Profile
+            </button>
+          )}
         </div>
       </div>
     </div>

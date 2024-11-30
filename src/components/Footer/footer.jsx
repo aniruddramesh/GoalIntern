@@ -1,23 +1,31 @@
-import React from 'react'
-import './footer.css'
+import React from 'react';
+import './footer.css';
+import Logo from '../Images/GoalIntern2.png'; // Replace with the correct path to your logo image
 
 function Footer() {
-    return (
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-      <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
-    </div>
+  return (
+    <footer className="footer">
+      <div className="footer-content">
+        {/* Logo and Website Name */}
+        <div className="footer-logo">
+          <img src={Logo} alt="GoalIntern Logo" className="footer-logo-img" />
+          <h2 className="footer-title">GoalIntern</h2>
+        </div>
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-    </ul>
-  </footer>
-    )
+        {/* Footer Links */}
+        <div className="footer-links">
+          <a href="/">Home</a>
+          <a href="/contact">Contact</a>
+          <a href="/about">About</a>
+        </div>
+
+        {/* Copyright */}
+        <p className="footer-copyright">
+          © 2024 GoalIntern | All Rights Reserved
+        </p>
+      </div>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

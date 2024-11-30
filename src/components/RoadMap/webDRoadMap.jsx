@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const resources = [
   { title: "HTML & CSS Basics", description: "Learn the foundation of web development.", path: "/section1" },
-  { title: "JavaScript Essentials", description: "Master JavaScript to add interactivity to your web pages.", path: "/javascript" },
-  { title: "React Basics", description: "Understand components, state, and props in React.", path: "/react-basics" },
-  { title: "Advanced React", description: "Learn hooks, context API, and advanced patterns.", path: "/advanced-react" },
-  { title: "Backend Development", description: "Explore Node.js, Express, and databases.", path: "/backend-development" },
-  { title: "Full Stack Projects", description: "Build and deploy full-stack applications.", path: "/full-stack-projects" },
+  { title: "JavaScript Essentials", description: "Master JavaScript to add interactivity to your web pages.", path: "/section2" },
+  { title: "React Basics", description: "Understand components, state, and props in React.", path: "/section3" },
+  { title: "Advanced React", description: "Learn hooks, context API, and advanced patterns.", path: "/section4" },
+  { title: "Backend Development", description: "Explore Node.js, Express, and databases.", path: "/section5" },
+  { title: "Full Stack Projects", description: "Build and deploy full-stack applications.", path: "/section6" },
 ];
 
 const Roadmap = () => {

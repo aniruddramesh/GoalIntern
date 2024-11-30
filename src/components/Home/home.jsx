@@ -3,6 +3,7 @@ import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { Link } from 'react-router-dom';
 import './home.css';
+import Footer from '../Footer/footer';
 
 function Home() {
   const particlesInit = async (main) => {
@@ -55,49 +56,51 @@ function Home() {
   }, increaseInterval);
   
   return (
-    <div className="home-container">
-      {/* Particle Background */}
-      <Particles className="particles-bg" options={options} init={particlesInit} />
+    <><div className="home-container">
+    {/* Particle Background */}
+    <Particles className="particles-bg" options={options} init={particlesInit} />
 
-      {/* Cards Section */}
-      <div className="content">
-        <div className="custom-card">
-          <div className="card-image">
-            <img
-              src="https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="Card 1"
-            />
-          </div>
-          <div className="card-body">
-            <h5 className="card-title">What Next?</h5>
-            <p className="card-text">
-              Explore new opportunities and take the next step in your journey.
-            </p>
-            <Link to="/getstarted" className="btn btn-primary">
-              Get Started &gt;
-            </Link>
-          </div>
+    {/* Cards Section */}
+    <div className="content">
+      <div className="custom-card">
+        <div className="card-image">
+          <img
+            src="https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Card 1"
+          />
         </div>
+        <div className="card-body">
+          <h5 className="card-title">What Next?</h5>
+          <p className="card-text">
+            Explore new opportunities and take the next step in your journey.
+          </p>
+          <Link to="/getstarted" className="btn btn-primary">
+            Get Started &gt;
+          </Link>
+        </div>
+      </div>
 
-        <div className="custom-card">
-          <div className="card-image">
-            <img
-              src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="Card 2"
-            />
-          </div>
-          <div className="card-body">
-            <h5 className="card-title">Documentation</h5>
-            <p className="card-text">
-              Access comprehensive resources to support your projects.
-            </p>
-            <Link to="/documentation" className="btn btn-primary">
-              Documentation &gt;
-            </Link>
-          </div>
+      <div className="custom-card">
+        <div className="card-image">
+          <img
+            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Card 2"
+          />
+        </div>
+        <div className="card-body">
+          <h5 className="card-title">Documentation</h5>
+          <p className="card-text">
+            Access comprehensive resources to support your projects.
+          </p>
+          <Link to="/documentation" className="btn btn-primary">
+            Documentation &gt;
+          </Link>
         </div>
       </div>
     </div>
+  </div>
+  <Footer/>
+  </>
   );
 }
 

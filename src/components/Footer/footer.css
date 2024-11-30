@@ -1,63 +1,57 @@
-/* Footer Styling */
-.custom-footer {
-    background-color: #222; /* Dark background for contrast */
-    color: #ddd;
-    border-top: 2px solid #444; /* Slightly brighter border */
-    padding: 1.5rem 2rem;
-    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.3);
-    
-  }
-  
-  .custom-footer .col-md-4 span {
-    color: #aaa;
-    font-size: 0.9rem;
-  }
-  
-  /* Logo/Icon Styling */
-  .custom-footer .logo-icon svg {
-    fill: #f0db4f;
-    transition: transform 0.3s ease, fill 0.3s;
-  }
-  
-  .custom-footer .logo-icon:hover svg {
-    fill: #ffcc33;
-    transform: scale(1.1);
-  }
-  
-  /* Social Media Icons */
-  .custom-footer .social-icon svg {
-    fill: #aaa;
-    transition: fill 0.3s ease, transform 0.3s ease;
-  }
-  
-  .custom-footer .social-icon:hover svg {
-    fill: #f0db4f;
-    transform: scale(1.2);
-  }
-  
-  /* Adjustments for Footer Links */
-  .custom-footer .nav a {
-    color: #ddd;
-    transition: color 0.3s;
-  }
-  
-  .custom-footer .nav a:hover {
-    color: #f0db4f;
-  }
-  
-  /* Responsive Font Size */
-  @media (max-width: 768px) {
-    .custom-footer {
-      text-align: center;
-    }
-  
-    .custom-footer .col-md-4 {
-      justify-content: center;
-    }
-  
-    .custom-footer .nav {
-      justify-content: center;
-      margin-top: 1rem;
-    }
-  }
-  
+/* footer.css */
+.footer {
+  background-color: rgba(0, 0, 0, 0.8); /* Subtle black background with transparency */
+  color: #ccc; /* Light gray text */
+  text-align: center;
+  padding: 1rem 0; /* Reduced padding for a smaller height */
+  position: relative;
+  width: 100%;
+  font-family: 'Roboto', Arial, sans-serif; /* Consistent font */
+  font-size: 0.9rem; /* Smaller font size for compact design */
+}
+
+.footer-content {
+  max-width: 1100px; /* Slightly reduced max width */
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Reduced gap for compact spacing */
+  margin-bottom: 0.8rem; /* Reduced margin */
+}
+
+.footer-logo-img {
+  width: 40px; /* Smaller logo size */
+  height: 40px;
+  border-radius: 50%;
+}
+
+.footer-title {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1.2rem; /* Reduced font size */
+  color: #fff;
+}
+
+.footer-links {
+  margin: 0.8rem 0; /* Reduced margin */
+}
+
+.footer-links a {
+  color: #999;
+  text-decoration: none;
+  margin: 0 8px; /* Reduced spacing between links */
+  font-size: 0.85rem; /* Slightly smaller link font */
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff; /* Brighter color on hover */
+}
+
+.footer-copyright {
+  font-size: 0.75rem; /* Smaller font size */
+  margin-top: 0.5rem; /* Reduced margin */
+}

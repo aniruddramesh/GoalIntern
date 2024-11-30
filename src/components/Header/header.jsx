@@ -2,7 +2,8 @@ import React from 'react';
 import './header.css';
 import { Link } from 'react-router-dom';
 import { useLogin } from '../Auth/LoginContext';
-import Logo from '../Images/Logo.png';
+import GoalIntern2 from '../Images/GoalIntern2.png';
+
 
 function Header() {
   const { isLoggedIn, logout } = useLogin();
@@ -12,7 +13,7 @@ function Header() {
       <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         {/* Logo */}
         <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none logo-icon">
-          <img src={Logo} alt="InternSure Logo" className="rounded-logo" />
+          <img src={GoalIntern2} alt="GoalIntern Logo" className="rounded-logo" />
         </Link>
 
         {/* Navigation Links */}

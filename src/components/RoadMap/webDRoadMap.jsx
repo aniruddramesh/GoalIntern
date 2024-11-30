@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
@@ -13,8 +13,18 @@ const resources = [
 ];
 
 const Roadmap = () => {
-  const [progress, setProgress] = useState(0);
-  const [completed, setCompleted] = useState(new Array(resources.length).fill(false));
+  // Retrieve data from localStorage
+  const storedCompleted = JSON.parse(localStorage.getItem("completed")) || new Array(resources.length).fill(false);
+  const storedProgress = parseInt(localStorage.getItem("progress"), 10) || 0;
+
+  const [progress, setProgress] = useState(storedProgress);
+  const [completed, setCompleted] = useState(storedCompleted);
+
+  useEffect(() => {
+    // Save to localStorage whenever completed or progress changes
+    localStorage.setItem("completed", JSON.stringify(completed));
+    localStorage.setItem("progress", progress.toString());
+  }, [completed, progress]);
 
   const handleCheckboxChange = (index) => {
     const updatedCompleted = [...completed];
@@ -76,22 +86,22 @@ const Milestone = ({ index, resource, isChecked, onCheckboxChange }) => {
           <p style={resourceDescriptionStyle}>{resource.description}</p>
         </Link>
         <label style={toggleContainerStyle}>
-  <input
-    type="checkbox"
-    checked={isChecked}
-    onChange={onCheckboxChange}
-    style={hiddenCheckboxStyle}
-  />
-  <span style={toggleStyle(isChecked)}>
-    <div style={toggleCircleStyle}></div>
-  </span>
-</label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={onCheckboxChange}
+            style={hiddenCheckboxStyle}
+          />
+          <span style={toggleStyle(isChecked)}>
+            <div style={toggleCircleStyle}></div>
+          </span>
+        </label>
       </div>
     </animated.div>
   );
 };
 
-// Styles
+// Styles (unchanged)
 const containerStyle = {
   position: "relative",
   display: "flex",
@@ -102,7 +112,7 @@ const containerStyle = {
   fontFamily: "'Poppins', sans-serif",
   background: "linear-gradient(to bottom right, #4e54c8, #8f94fb)",
   overflow: "hidden",
-  top:"40px",
+  top: "40px",
 };
 
 const titleStyle = {
@@ -258,7 +268,6 @@ const toggleCircleStyle = {
   boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
   transition: "all 0.3s ease",
 };
-
 
 const style = document.createElement("style");
 style.textContent = `

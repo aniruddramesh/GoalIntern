@@ -19,6 +19,7 @@ import Section2 from './components/WebDResources/Section2/section2';
 import Section3 from './components/WebDResources/Section3/section3';
 import Footer from './components/Footer/footer';
 import Documentation from './components/Documentation/documentation';
+import PdfViewer from './components/WebDResources/Section1/pdfViewer';
 // import Section4 from './components/WebDResources/Section4/section4';
 // import Section5 from './components/WebDResources/section5';
 
@@ -46,6 +47,7 @@ function App() {
         {/* <Route path="/section4" element={<Section4/>} /> */}
         {/* <Route path="/section5" element={<Section5/>} /> */}
         <Route path="/documentation" element={<Documentation/>} />
+        <Route path="/pdf-viewer"   element={<PdfViewer/>} />
 
         </Routes>
       

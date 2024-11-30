@@ -1,10 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // For making API requests
 
 function ResetPassword({ token }) {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  // Retrieve password data from localStorage if available
+  useEffect(() => {
+    const savedNewPassword = localStorage.getItem('newPassword');
+    const savedConfirmPassword = localStorage.getItem('confirmPassword');
+    if (savedNewPassword) {
+      setNewPassword(savedNewPassword);
+    }
+    if (savedConfirmPassword) {
+      setConfirmPassword(savedConfirmPassword);
+    }
+  }, []);
+
+  // Save passwords to localStorage whenever they change
+  useEffect(() => {
+    if (newPassword) {
+      localStorage.setItem('newPassword', newPassword);
+    }
+    if (confirmPassword) {
+      localStorage.setItem('confirmPassword', confirmPassword);
+    }
+  }, [newPassword, confirmPassword]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +39,9 @@ function ResetPassword({ token }) {
     try {
       const response = await axios.post('/api/reset-password', { token, newPassword });
       setMessage('Password successfully reset.');
+      // Optionally, clear local storage after successful submission
+      localStorage.removeItem('newPassword');
+      localStorage.removeItem('confirmPassword');
     } catch (error) {
       setMessage('Error: Could not reset password. Please try again.');
     }
